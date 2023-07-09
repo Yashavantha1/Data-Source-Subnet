@@ -1,0 +1,20 @@
+data "aws_subnet" "terrademo_private_subnet" {
+filter {
+name = "tag:Name"
+values = [ "private_subnet_name"]
+}
+
+ depends_on = [
+      aws_subnet.terrademo_private_subnet
+    ]
+    }
+
+
+output "subnet_cidr" {
+  value = data.aws_subnet.terrademo_private_subnet.cidr_block
+}
+
+output "subnet_availability_zone" {
+  value = data.aws_subnet.terrademo_private_subnet.availability_zone
+}
+
